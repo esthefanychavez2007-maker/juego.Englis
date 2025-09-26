@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>English Grammar Challenge</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div class="game" role="application" aria-label="English Grammar Challenge">
+    <header>
+      <div class="title">
+        <div class="logo">EN</div>
+        <div>
+          <h1 id="game-title">English Grammar Challenge</h1>
+          <div class="sub">Fast grammar game • 5s per question • 3 lives</div>
+        </div>
+      </div>
+
+      <div class="hud" aria-hidden="false">
+        <div class="pill lives" id="hud-lives">❤️❤️❤️</div>
+        <div class="pill timer" id="hud-timer">⏱️ 5s</div>
+        <div class="pill score" id="hud-score">Score: 0</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="stage">
+        <!-- Start / Question / Match board will appear here -->
+        <div id="start-screen">
+          <div style="display:flex; gap:14px; align-items:center;">
+            <div style="font-size:44px">🇬🇧</div>
+            <div style="text-align:left">
+              <h2 style="margin:0; color:var(--accent)">English Grammar Challenge</h2>
+              <div class="muted">Practice grammar under pressure — Present Simple, Present Continuous, Past Simple, Past Continuous, Wh-Questions + Final Mix.</div>
+            </div>
+          </div>
+          <p class="desc">You have <strong>3 lives</strong>. Each question must be answered in <strong>5 seconds</strong>. If you lose all lives you will play a short minigame — win it to recover <strong>1 life</strong> and continue. Complete each level (10 questions) to unlock the next.</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:8px;">
+            <button class="btn" id="start-btn">Start Game ▶️</button>
+            <button class="btn" id="how-btn" style="background:transparent; border:1px solid rgba(255,255,255,0.08); color:var(--accent)">How to play</button>
+          </div>
+        </div>
+
+        <div id="question-area" style="display:none; animation:fadeIn .3s">
+          <div class="question" id="question-text">Question text</div>
+          <div class="options" id="options-area"></div>
+          <div class="notice" id="q-info">Select the correct option fast!</div>
+        </div>
+
+        <div id="match-area" style="display:none; animation:fadeIn .3s">
+          <div class="question" id="match-title">Minigame: Match the pairs</div>
+          <div class="muted">Select an English card, then its translation. Need ≥3/5 to recover 1 life.</div>
+          <div class="match-board" id="match-board"></div>
+          <div style="margin-top:12px;">
+            <div class="muted">Correct: <span id="match-correct">0</span> / 5</div>
+            <button class="btn" id="match-skip" style="background:transparent; border:1px solid rgba(255,255,255,0.08); color:var(--accent); margin-top:8px">Skip (accept defeat)</button>
+          </div>
+        </div>
+
+        <div id="level-complete-area" style="display:none; text-align:center; padding:10px; animation:fadeIn .3s">
+          <h2>✅ Level Complete!</h2>
+          <p class="muted">Great job — move to the next level.</p>
+          <button class="btn" id="continue-btn">Continue ▶️</button>
+        </div>
+
+      </section>
+
+      <aside class="panel">
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="font-weight:800">Level</div>
+          <div id="level-name" style="font-size:1.05rem; color:var(--accent)">—</div>
+          <hr style="opacity:0.06; border:none; border-top:1px solid rgba(255,255,255,0.04)">
+
+          <div style="font-weight:800">Progress</div>
+          <div id="progress-text" class="muted">0 / 10</div>
+
+          <div style="margin-top:12px;">
+            <div style="font-weight:800">Status</div>
+            <div id="status-text" class="muted">Ready</div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <div style="font-weight:800">Controls</div>
+            <div class="muted">You can restart anytime.</div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="restart-btn" style="background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--accent)">Restart</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- overlays -->
+  <div id="overlay" class="overlay" role="dialog" aria-hidden="true">
+    <div class="modal" id="overlay-modal"></div>
+  </div>
+  
+
+<script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+</body>
+</html>
